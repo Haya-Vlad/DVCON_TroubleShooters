@@ -1,0 +1,25 @@
+# TaskGraph-Edge Dependencies
+# Core ML
+ultralytics>=8.0.0
+onnxruntime>=1.15.0
+sentence-transformers>=2.2.0
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Computer Vision
+opencv-python>=4.8.0
+Pillow>=10.0.0
+
+# Data & Config
+numpy>=1.24.0
+pyyaml>=6.0
+scipy>=1.10.0
+
+# Visualization & Demo
+matplotlib>=3.7.0
+
+# Testing
+pytest>=7.0.0
+
+# FPGA Communication (USB/Serial)
+pyserial>=3.5

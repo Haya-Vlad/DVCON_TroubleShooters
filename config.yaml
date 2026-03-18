@@ -1,0 +1,74 @@
+# ============================================================
+# TaskGraph-Edge Configuration
+# ============================================================
+
+project:
+  name: "TaskGraph-Edge"
+  version: "1.0.0"
+  description: "Hybrid Vision-Language Graph Reasoning Engine"
+
+# --- Object Detection ---
+detection:
+  model: "yolov8n"                # YOLOv8-nano
+  input_size: 640                 # Input image size
+  confidence_threshold: 0.35     # Min detection confidence (raised to reduce false positives)
+  iou_threshold: 0.45            # NMS IoU threshold
+  max_detections: 20             # Max objects to keep
+  device: "cpu"                  # cpu or cuda
+  feature_dim: 128               # Visual feature dimension
+
+# --- Task Language Encoder ---
+language:
+  model: "all-MiniLM-L6-v2"     # Sentence transformer model
+  embedding_dim: 384             # Output embedding dimension
+  max_length: 128                # Max token length
+  cache_embeddings: true         # Cache task embeddings
+
+# --- Affordance Engine ---
+affordance:
+  embedding_dim: 64              # Affordance embedding size
+  soft_match_weight: 0.4         # Weight for soft (semantic) matching
+  hard_match_weight: 0.6         # Weight for hard (exact) matching
+
+# --- Scene Graph ---
+scene_graph:
+  k_neighbors: 5                 # KNN connectivity
+  max_distance: 0.5              # Max normalized distance for edges
+  spatial_feature_dim: 9         # Spatial relation vector size
+  edge_feature_dim: 16           # Edge feature dimension
+
+# --- Graph Neural Network ---
+gnn:
+  hidden_dim: 128                # Hidden dimension
+  output_dim: 64                 # Output node embedding dim
+  num_layers: 2                  # Number of GNN layers
+  num_heads: 4                   # Attention heads (GAT)
+  dropout: 0.1                   # Dropout rate
+  task_condition: true           # Enable task conditioning
+
+# --- Object Ranking ---
+ranking:
+  weights:
+    detection_confidence: 0.10   # α - detector confidence weight (lowered to reduce size bias)
+    task_similarity: 0.35        # β - task-object similarity weight (increased for better semantic matching)
+    affordance_match: 0.35       # γ - affordance match weight
+    scene_context: 0.20          # δ - scene context weight
+  early_exit_threshold: 0.92    # Skip GNN if score > this
+  top_k: 5                      # Return top-K objects
+
+# --- FPGA Acceleration ---
+fpga:
+  enabled: true                  # Enable FPGA offloading
+  port: "COM4"                   # USB serial port to Zynq-7000
+  baud_rate: 115200              # UART baud rate
+  timeout: 5.0                   # Communication timeout (seconds)
+  quantization:
+    enabled: true
+    bits: 8                      # INT8 quantization
+    scale_factor: 127.0          # Quantization scale
+
+# --- Performance ---
+performance:
+  profiling: true                # Enable per-stage timing
+  warmup_runs: 3                 # Warmup iterations
+  benchmark_runs: 100            # Benchmark iterations

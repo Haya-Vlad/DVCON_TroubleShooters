@@ -1,0 +1,54 @@
+========================================================================================= test session starts =========================================================================================
+collecting ... collected 37 items
+
+tests/test_detector.py::TestCOCOClasses::test_80_classes FAILED                                                                                                                                  [  2%]
+tests/test_detector.py::TestCOCOClasses::test_class_id_mapping PASSED                                                                                                                            [  5%]
+tests/test_detector.py::TestCOCOClasses::test_class_name_mapping PASSED                                                                                                                          [  8%]
+tests/test_detector.py::TestCOCOClasses::test_supercategories PASSED                                                                                                                             [ 10%]
+tests/test_detector.py::TestDetection::test_detection_dataclass PASSED                                                                                                                           [ 13%]
+tests/test_detector.py::TestDetection::test_detection_zero_area PASSED                                                                                                                           [ 16%]
+tests/test_affordance.py::TestAffordanceKB::test_coverage_all_coco PASSED                                                                                                                        [ 18%]
+tests/test_affordance.py::TestAffordanceKB::test_affordance_vector_shape PASSED                                                                                                                  [ 21%]
+tests/test_affordance.py::TestAffordanceKB::test_bottle_affordances PASSED                                                                                                                       [ 24%]
+tests/test_affordance.py::TestAffordanceKB::test_chair_affordances PASSED                                                                                                                        [ 27%]
+tests/test_affordance.py::TestAffordanceKB::test_has_affordance PASSED                                                                                                                           [ 29%]
+tests/test_affordance.py::TestAffordanceKB::test_find_objects_with_affordance PASSED                                                                                                             [ 32%]
+tests/test_affordance.py::TestAffordanceKB::test_unknown_object PASSED                                                                                                                           [ 35%]
+tests/test_affordance.py::TestAffordanceScorer::test_score_range PASSED                                                                                                                          [ 37%]
+tests/test_affordance.py::TestAffordanceScorer::test_bottle_good_for_pour PASSED                                                                                                                 [ 40%]
+tests/test_affordance.py::TestAffordanceScorer::test_chair_bad_for_pour PASSED                                                                                                                   [ 43%]
+tests/test_affordance.py::TestAffordanceScorer::test_batch_scoring PASSED                                                                                                                        [ 45%]
+tests/test_scene_graph.py::TestSpatialRelations::test_above_relation PASSED                                                                                                                      [ 48%]
+tests/test_scene_graph.py::TestSpatialRelations::test_below_relation PASSED                                                                                                                      [ 51%]
+tests/test_scene_graph.py::TestSpatialRelations::test_near_relation PASSED                                                                                                                       [ 54%]
+tests/test_scene_graph.py::TestSpatialRelations::test_edge_features_shape PASSED                                                                                                                 [ 56%]
+tests/test_scene_graph.py::TestSceneGraphBuilder::test_build_graph PASSED                                                                                                                        [ 59%]
+tests/test_scene_graph.py::TestSceneGraphBuilder::test_node_features_shape PASSED                                                                                                                [ 62%]
+tests/test_scene_graph.py::TestSceneGraphBuilder::test_edge_index_shape PASSED                                                                                                                   [ 64%]
+tests/test_scene_graph.py::TestSceneGraphBuilder::test_adjacency_matrix PASSED                                                                                                                   [ 67%]
+tests/test_scene_graph.py::TestSceneGraphBuilder::test_empty_detections PASSED                                                                                                                   [ 70%]
+tests/test_gnn.py::TestGATLayer::test_forward_shape PASSED                                                                                                                                       [ 72%]
+tests/test_gnn.py::TestGATLayer::test_no_edges PASSED                                                                                                                                            [ 75%]
+tests/test_gnn.py::TestNodeScoringHead::test_output_range PASSED                                                                                                                                 [ 78%]
+tests/test_gnn.py::TestTaskConditionedGNN::test_forward PASSED                                                                                                                                   [ 81%]
+tests/test_gnn.py::TestTaskConditionedGNN::test_predict_numpy PASSED                                                                                                                             [ 83%]
+tests/test_gnn.py::TestTaskConditionedGNN::test_parameter_count PASSED                                                                                                                           [ 86%]
+tests/test_ranker.py::TestObjectRanker::test_ranking_order PASSED                                                                                                                                [ 89%]
+tests/test_ranker.py::TestObjectRanker::test_score_range PASSED                                                                                                                                  [ 91%]
+tests/test_ranker.py::TestObjectRanker::test_explainability PASSED                                                                                                                               [ 94%]
+tests/test_ranker.py::TestObjectRanker::test_empty_input PASSED                                                                                                                                  [ 97%]
+tests/test_ranker.py::TestObjectRanker::test_summary PASSED                                                                                                                                      [100%]
+
+============================================================================================== FAILURES ===============================================================================================
+___________________________________________________________________________________ TestCOCOClasses.test_80_classes ___________________________________________________________________________________
+tests\test_detector.py:19: in test_80_classes
+    assert len(COCO_CLASSES) >= 80
+E   AssertionError: assert 75 >= 80
+E    +  where 75 = len(['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', ...])
+======================================================================================= short test summary info =======================================================================================
+FAILED tests/test_detector.py::TestCOCOClasses::test_80_classes - AssertionError: assert 75 >= 80
+==================================================================================== 1 failed, 36 passed in 3.45s =====================================================================================
+
+---STDERR---
+
+Exit:1
